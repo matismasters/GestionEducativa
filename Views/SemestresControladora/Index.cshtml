@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Semestres</h1>
+<a href="/SemestresControladora/Nuevo">Nuevo Semestre</a>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>OrdenNumero</th>
+        <th>Carrera</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (Semestre semestre in ViewBag.Semestres)
+    {
+        <tr>
+            <td>@semestre.Nombre</td>
+            <td>@semestre.OrdenNumero</td>
+            <td>@semestre.Carrera?.Nombre</td>
+            <td>
+                <a href="/SemestresControladora/Detalle/@semestre.Id">Detalle</a>
+                <a href="/SemestresControladora/Editando/@semestre.Id">Editar</a>
+                <a href="/SemestresControladora/Borrar/@semestre.Id">Borrar</a>
+            </td>
+        </tr>
+    }
+</table>

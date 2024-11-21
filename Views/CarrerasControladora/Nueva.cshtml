@@ -1,0 +1,21 @@
+﻿<h1>Crear Nueva Carrera</h1>
+
+<p class="text-danger">@ViewBag.Error</p>
+
+<form action="/CarrerasControladora/Crear" method="post">
+    <div class="form-control">
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="nombre" value="@ViewBag.Nombre"/>
+    </div>
+    <div class="form-control">
+        <label for="Descripcion">Descripcion</label>
+        <textarea name="descripcion">@ViewBag.Descripcion</textarea>
+    </div>
+    <div class="form-control">
+        <label for="Requerimientos">Requerimientos</label>
+        <textarea name="requerimientos">@ViewBag.Requerimientos</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="/CarrerasControladora/Index" class="btn btn-secondary">Cancelar</a>
+</form>

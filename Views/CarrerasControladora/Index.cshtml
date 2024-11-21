@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Carreras</h1>
+<a href="/CarrerasControladora/Nueva">Nueva Carrera</a>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (Carrera carrera in ViewBag.Carreras)
+    {
+        <tr>
+            <td>@carrera.Nombre</td>
+            <td>
+                <a href="/CarrerasControladora/Detalle/@carrera.Id">Detalle</a>
+                <a href="/CarrerasControladora/Editando/@carrera.Id">Editar</a>
+                <a href="/CarrerasControladora/Borrar/@carrera.Id">Borrar</a>
+            </td>
+        </tr>
+    }
+</table>

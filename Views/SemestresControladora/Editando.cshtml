@@ -1,0 +1,29 @@
+﻿<h1>Crear Nueva Semestre</h1>
+
+<p class="text-danger">@ViewBag.Error</p>
+
+<form action="/SemestresControladora/Editar" method="post">
+    <input type="hidden" name="id" value="@ViewBag.Semestre.Id" />
+
+    <div class="form-control">
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="nombre" value="@ViewBag.Semestre.Nombre" />
+    </div>
+    <div class="form-control">
+        <label for="OrdenNumero">OrdenNumero</label>
+        <input type="number" name="ordenNumero" value="@ViewBag.Semestre.OrdenNumero" />
+    </div>
+    <div class="form-control">
+        <label for="CarreraId">Carrera</label>
+        <select name="carreraId">
+            @foreach (Carrera carrera in ViewBag.Carreras)
+            {
+                @Html.Raw(carrera.AsOption(ViewBag.Semestre.CarreraId))
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="/SemestresControladora/Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
