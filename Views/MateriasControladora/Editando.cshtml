@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Editar Materia: @ViewBag.Nombre</h1>
+<p class="text-danger">@ViewBag.Error</p>
+
+<form action="/MateriasControladora/Editar" method="post">
+    <input type="hidden" name="id" value="@ViewBag.Id" />
+
+    <div class="form-control">
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="nombre" value="@ViewBag.Nombre" />
+    </div>
+
+    <div class="form-control">
+        <label for="Descripcion">Descripcion</label>
+        <input type="text" name="descripcion" value="@ViewBag.Descripcion" />
+    </div>
+
+    <div class="form-control">
+        <label for="SemestreId">Semestre</label>
+        <select name="semestreId">
+            <option>Selecciona una opcion</option>
+            @foreach (Semestre semestre in ViewBag.Semestres)
+            {
+                @Html.Raw(semestre.AsOption(ViewBag.SemestreId))
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="/MateriasControladora/Index" class="btn btn-secondary">Cancelar</a>
+</form>

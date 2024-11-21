@@ -13,6 +13,7 @@ namespace GestionEducativa.Data
 
         public DbSet<Carrera> Carreras { get; set; }
         public DbSet<Semestre> Semestres { get; set; }
+        public DbSet<Materia> Materias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +32,14 @@ namespace GestionEducativa.Data
                 .HasOne(semestre => semestre.Carrera)
                 .WithMany(carrera => carrera.Semestres)
                 .HasForeignKey(semestre => semestre.CarreraId);
+
+            modelBuilder.Entity<Materia>()
+                .HasKey(materia => materia.Id);
+
+            modelBuilder.Entity<Materia>()
+                .HasOne(materia => materia.Semestre)
+                .WithMany(semestre => semestre.Materias)
+                .HasForeignKey(materia => materia.SemestreId);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -29,44 +29,8 @@
 
         public string AsOption(int selectedId)
         {
-            string optionStr = "<option value='";
-            optionStr += Id;
-            optionStr += "'";
-
-            if (Id == selectedId)
-            {
-                optionStr += " selected";
-            }
-            
-            optionStr += ">";
-            optionStr += Nombre;
-            optionStr += "</option>";
-
-            return optionStr;
+            return $"<option value='{Id}'{(Id == selectedId ? " selected" : "")}>{Nombre}</option>";
         }
 
-        /*
-         * protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        // Configuración de Carrera
-        modelBuilder.Entity<Carrera>()
-            .HasKey(c => c.Id);
-
-        modelBuilder.Entity<Carrera>()
-            .HasMany(c => c.Semestres)
-            .WithOne(s => s.Carrera)
-            .HasForeignKey(s => s.CarreraId);
-
-        // Configuración de Semestre
-        modelBuilder.Entity<Semestre>()
-            .HasKey(s => s.Id);
-
-        modelBuilder.Entity<Semestre>()
-            .HasOne(s => s.Carrera)
-            .WithMany(c => c.Semestres)
-            .HasForeignKey(s => s.CarreraId);
-
-        base.OnModelCreating(modelBuilder);
-    }*/
     }
 }

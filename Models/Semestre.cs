@@ -7,9 +7,9 @@ namespace GestionEducativa.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int OrdenNumero { get; set; }
-
         public int CarreraId { get; set; }
         public Carrera Carrera { get; set; }
+        public List<Materia> Materias { get; set; }
 
         public Semestre() { }
 
@@ -28,6 +28,11 @@ namespace GestionEducativa.Models
             }
 
             return true;
+        }
+
+        public string AsOption(int? selectedId)
+        {
+            return $"<option value='{Id}'{(Id == selectedId ? " selected" : "")}>{Carrera.Nombre} - {Nombre}</option>";
         }
     }
 }
