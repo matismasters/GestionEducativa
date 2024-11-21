@@ -1,29 +1,38 @@
-﻿<h1>Crear Nueva Semestre</h1>
+﻿
+<div class="container mt-5">
+    <h1 class="mb-4">Editar Semestre</h1>
 
-<p class="text-danger">@ViewBag.Error</p>
+    <!-- Mensaje de error, si existe alguno -->
+    <p class="text-danger">@ViewBag.Error</p>
 
-<form action="/SemestresControladora/Editar" method="post">
-    <input type="hidden" name="id" value="@ViewBag.Semestre.Id" />
+    <!-- Formulario para crear un nuevo semestre -->
+    <form action="/SemestresControladora/Editar" method="post" class="mt-4">
+        <input type="hidden" name="id" value="@ViewBag.Semestre.Id" />
 
-    <div class="form-control">
-        <label for="Nombre">Nombre</label>
-        <input type="text" name="nombre" value="@ViewBag.Semestre.Nombre" />
-    </div>
-    <div class="form-control">
-        <label for="OrdenNumero">OrdenNumero</label>
-        <input type="number" name="ordenNumero" value="@ViewBag.Semestre.OrdenNumero" />
-    </div>
-    <div class="form-control">
-        <label for="CarreraId">Carrera</label>
-        <select name="carreraId">
-            @foreach (Carrera carrera in ViewBag.Carreras)
-            {
-                @Html.Raw(carrera.AsOption(ViewBag.Semestre.CarreraId))
-            }
-        </select>
-    </div>
+        <div class="form-group mb-3">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="@ViewBag.Semestre.Nombre" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="ordenNumero">Orden Número</label>
+            <input type="number" id="ordenNumero" name="ordenNumero" value="@ViewBag.Semestre.OrdenNumero" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="carreraId">Carrera</label>
+            <select id="carreraId" name="carreraId" class="form-control">
+                @foreach (var carrera in ViewBag.Carreras)
+                {
+                    @Html.Raw(carrera.AsOption(ViewBag.Semestre.CarreraId));
+                }
+            </select>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Guardar</button>
-    <a href="/SemestresControladora/Index" class="btn btn-secondary">Cancelar</a>
-</form>
+        <!-- Botones de acción -->
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/SemestresControladora/Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
 
