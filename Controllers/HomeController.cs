@@ -17,16 +17,6 @@ namespace GestionEducativa.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Index(string name, string apellido)
-        {
-            ViewBag.Name = name;
-            ViewBag.Apellido = apellido;
-
-            Console.WriteLine(name);
-            Console.WriteLine(apellido);
-            return View();
-        }
 
         public IActionResult Privacy()
         {
